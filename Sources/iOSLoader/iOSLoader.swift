@@ -20,7 +20,7 @@ public struct iOSLoader<Content>: View where Content: View  {
 
                 VStack {
                     Text("Loading...")
-                    ActivityIndicator(isAnimating: .constant(true), style: .large)
+                    DefaultActivityIndicator(isAnimating: .constant(true), style: .large)
                 }
                 .frame(width: geometry.size.width / 2,
                        height: geometry.size.height / 5)
@@ -30,19 +30,5 @@ public struct iOSLoader<Content>: View where Content: View  {
                 .opacity(self.isShowing ? 1 : 0)
             }
         }
-    }
-}
-
-@available(iOS 14, macOS 11.0, *)
-struct ActivityIndicator: UIViewRepresentable {
-    @Binding var isAnimating: Bool
-    let style: UIActivityIndicatorView.Style
-
-    func makeUIView(context: UIViewRepresentableContext<ActivityIndicator>) -> UIActivityIndicatorView {
-        return UIActivityIndicatorView(style: style)
-    }
-
-    func updateUIView(_ uiView: UIActivityIndicatorView, context: UIViewRepresentableContext<ActivityIndicator>) {
-        isAnimating ? uiView.startAnimating() : uiView.stopAnimating()
     }
 }
