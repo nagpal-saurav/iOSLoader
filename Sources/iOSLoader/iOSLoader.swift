@@ -1,13 +1,15 @@
 import SwiftUI
 
 @available(iOS 14, macOS 11.0, *)
+
 public struct iOSLoader<Content>: View where Content: View  {
-    @Binding var isShowing: Bool
+    @Binding var isAnimating: Bool
     public typealias ViewContent = () -> Content
     var content: ViewContent
+    fileprivate var loaderSize = CGSize(width: 150, height: 150)
     
     public init(show: Binding<Bool>, @ViewBuilder content: @escaping ViewContent) {
-        _isShowing = show
+        _isAnimating = show
         self.content = content
     }
     
@@ -15,20 +17,21 @@ public struct iOSLoader<Content>: View where Content: View  {
         GeometryReader { geometry in
             ZStack(alignment: .center) {
                 self.content()
-                    .disabled(self.isShowing)
-                    .blur(radius: self.isShowing ? 3 : 0)
+                    .disabled(self.isAnimating)
+                    .blur(radius: self.isAnimating ? 3 : 0)
 
                 VStack {
+                    SwiftUIActivityView(isAnimating: $isAnimating).frame(width: 40, height: 40)
                     Text("Loading...")
-                    DefaultActivityIndicator(isAnimating: .constant(true), style: .large)
                 }
-                .frame(width: geometry.size.width / 2,
-                       height: geometry.size.height / 5)
+                .frame(width: loaderSize.width,
+                       height: loaderSize.height)
                 .background(Color.secondary.colorInvert())
                 .foregroundColor(Color.primary)
                 .cornerRadius(20)
-                .opacity(self.isShowing ? 1 : 0)
+                .opacity(self.isAnimating ? 1 : 0)
             }
         }
     }
 }
+

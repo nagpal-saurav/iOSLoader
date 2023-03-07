@@ -16,7 +16,7 @@ struct BasicLoaderView: View {
                 iOSLoader(show: $isLoading) {
                     
                 }
-            }.frame(width: geo.size.width, height: geo.size.height)
+            }
         }
     }
 }

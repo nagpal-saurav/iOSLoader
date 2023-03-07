@@ -6,20 +6,39 @@
 //
 
 import Foundation
-import SwiftUI
+import UIKit
 
-@available(iOS 14, *)
-struct DefaultActivityIndicator: UIViewRepresentable {
-    typealias UIViewType = UIActivityIndicatorView
-    
-    @Binding var isAnimating: Bool
-    let style: UIActivityIndicatorView.Style
+@available(iOS 13.0, *)
+class DefaultActivityIndicator: UIView, ActivityIndicatorView {
+    //MARK: - IVar
+    var isAnimating: Bool = false
+    private let activityIndicatorView = UIActivityIndicatorView(style: .large)
 
-    func makeUIView(context: UIViewRepresentableContext<DefaultActivityIndicator>) -> UIActivityIndicatorView {
-        return UIActivityIndicatorView(style: style)
+    //MARK: - Life Cycle Method
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.prepareActivityIndicatorView()
     }
-
-    func updateUIView(_ uiView: UIActivityIndicatorView, context: UIViewRepresentableContext<DefaultActivityIndicator>) {
-        isAnimating ? uiView.startAnimating() : uiView.stopAnimating()
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.prepareActivityIndicatorView()
+    }
+    
+    //MARK: - Setup Activity View
+    func prepareActivityIndicatorView(){
+        self.addSubview(self.activityIndicatorView)
+        activityIndicatorView.hidesWhenStopped = true
+        activityIndicatorView.style = .large
+        activityIndicatorView.setViewInCenterToView(self, withSize: frame.size)
+    }
+    
+    //MARK: - Loading Animation Delegate
+    func startAnimating() {
+        activityIndicatorView.startAnimating()
+    }
+    
+    func stopAnimating() {
+        activityIndicatorView.stopAnimating()
     }
 }

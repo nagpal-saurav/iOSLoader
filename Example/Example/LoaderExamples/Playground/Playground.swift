@@ -16,7 +16,7 @@ struct Playground: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
         ) {
             Group {
-                BasicLoaderView()
+                BasicLoaderView().frame(width: 300, height: 300)
             }
         }
     }
