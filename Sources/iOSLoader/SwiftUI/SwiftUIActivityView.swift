@@ -11,9 +11,15 @@ import SwiftUI
 struct SwiftUIActivityView: UIViewRepresentable {
     typealias UIViewType = UIView
     @Binding var isAnimating: Bool
+    private var activityIndicator: iOSLoaderActivityIndicatorType
+    
+    init(activityIndicator: iOSLoaderActivityIndicatorType, isAnimating: Binding<Bool>) {
+        self.activityIndicator = activityIndicator
+        _isAnimating = isAnimating
+    }
     
     func makeUIView(context: Context) -> UIView {
-        return DefaultActivityIndicator()
+        return iOActivityFactory.ActivityWithType(self.activityIndicator, isAnimating: _isAnimating)
     }
     
     func updateUIView(_ uiView: UIView, context: Context) {

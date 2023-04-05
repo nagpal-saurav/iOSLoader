@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C123C46829B76CA00011FF36 /* CircularArcLoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C123C46729B76CA00011FF36 /* CircularArcLoaderView.swift */; };
 		C17EE2CB29B07EDC00F3C0F4 /* ExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17EE2CA29B07EDC00F3C0F4 /* ExampleApp.swift */; };
 		C17EE2CD29B07EDC00F3C0F4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17EE2CC29B07EDC00F3C0F4 /* ContentView.swift */; };
 		C17EE2CF29B07EDD00F3C0F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C17EE2CE29B07EDD00F3C0F4 /* Assets.xcassets */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C123C46729B76CA00011FF36 /* CircularArcLoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularArcLoaderView.swift; sourceTree = "<group>"; };
 		C17EE2C729B07EDC00F3C0F4 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C17EE2CA29B07EDC00F3C0F4 /* ExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleApp.swift; sourceTree = "<group>"; };
 		C17EE2CC29B07EDC00F3C0F4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -87,8 +89,9 @@
 		C17EE2DA29B08BBD00F3C0F4 /* Playground */ = {
 			isa = PBXGroup;
 			children = (
-				C17EE2DB29B08BBD00F3C0F4 /* BasicLoaderView.swift */,
 				C17EE2DC29B08BBD00F3C0F4 /* Playground.swift */,
+				C17EE2DB29B08BBD00F3C0F4 /* BasicLoaderView.swift */,
+				C123C46729B76CA00011FF36 /* CircularArcLoaderView.swift */,
 			);
 			path = Playground;
 			sourceTree = "<group>";
@@ -180,6 +183,7 @@
 			files = (
 				C17EE2DE29B08BBD00F3C0F4 /* Playground.swift in Sources */,
 				C17EE2CD29B07EDC00F3C0F4 /* ContentView.swift in Sources */,
+				C123C46829B76CA00011FF36 /* CircularArcLoaderView.swift in Sources */,
 				C17EE2DD29B08BBD00F3C0F4 /* BasicLoaderView.swift in Sources */,
 				C17EE2CB29B07EDC00F3C0F4 /* ExampleApp.swift in Sources */,
 			);

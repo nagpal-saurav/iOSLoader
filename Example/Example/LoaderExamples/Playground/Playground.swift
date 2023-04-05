@@ -16,7 +16,8 @@ struct Playground: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
         ) {
             Group {
-                BasicLoaderView().frame(width: 300, height: 300)
+                BasicLoaderView().frame(width: 150, height: 150)
+                CircularArcLoaderView().frame(width: 150, height: 150)
             }
         }
     }
