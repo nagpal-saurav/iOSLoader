@@ -12,6 +12,7 @@ import UIKit
 class DefaultActivityIndicator: UIView, ActivityIndicatorView {
     //MARK: - IVar
     var isAnimating: Bool = false
+    var hideWhenStop: Bool = true
     private let activityIndicatorView = UIActivityIndicatorView(style: .large)
 
     //MARK: - Life Cycle Method
@@ -40,5 +41,6 @@ class DefaultActivityIndicator: UIView, ActivityIndicatorView {
     
     func stopAnimating() {
         activityIndicatorView.stopAnimating()
+        activityIndicatorView.isHidden = hideWhenStop
     }
 }

@@ -8,11 +8,12 @@ import Foundation
 import SwiftUI
 
 class CircleArcActivityIndicatorView: UIView, ActivityIndicatorView {
+    var hideWhenStop: Bool = true
     var isAnimating: Bool = false
 
     //MARK: - IVar
-    fileprivate let progressShape = CAShapeLayer()
-    fileprivate let backgroundShape = CAShapeLayer()
+    fileprivate var progressShape: CAShapeLayer?
+    fileprivate var backgroundShape: CAShapeLayer?
     fileprivate let strokeWidth: CGFloat = 10
     fileprivate var percent: Double = 0
 
@@ -31,28 +32,49 @@ class CircleArcActivityIndicatorView: UIView, ActivityIndicatorView {
     //MARK: - Setup Activity View
     func prepareActivityIndicatorView() {
         //setup background shape
-        backgroundShape.frame = self.frame
-        backgroundShape.path = UIBezierPath(ovalIn: frame).cgPath
+        let backgroundShape = SDShapeFactory.shapeWithType(.circle(fillColor: UIColor.clear, strokeColor: UIColor.lightGray), size: self.frame.size)
         backgroundShape.position = self.center
-        backgroundShape.strokeColor = UIColor.black.cgColor
         backgroundShape.lineWidth = strokeWidth
         backgroundShape.fillColor = UIColor.clear.cgColor
+        self.layer.addSublayer(backgroundShape)
+        self.backgroundShape = backgroundShape
         
-        progressShape.frame = frame
-        progressShape.path = backgroundShape.path
+        let progressShape = SDShapeFactory.shapeWithType(.circle(fillColor: UIColor.clear, strokeColor: UIColor.lightGray), size: self.frame.size)
         progressShape.position = backgroundShape.position
-        progressShape.strokeColor = UIColor.red.cgColor
+        if #available(iOS 15.0, *) {
+            progressShape.strokeColor = UIColor.tintColor.cgColor
+        } else {
+            // Fallback on earlier versions
+            progressShape.strokeColor = UIColor.purple.cgColor
+        }
         progressShape.lineWidth = strokeWidth
-        progressShape.fillColor = UIColor.clear.cgColor
         progressShape.strokeEnd = CGFloat(percent / 100.0)
+        self.layer.addSublayer(progressShape)
+        self.progressShape = progressShape
     }
     
     //MARK: - Loading Animation Delegate
     func startAnimating() {
+        self.addAnimation(duration: 10.0, delay: 0.0)
     }
     
     func stopAnimating() {
+        //activityIndicatorView.isHidden = hideWhenStop
+    }
     
+    func addAnimation(duration: TimeInterval, delay: TimeInterval) {
+        let animation = CABasicAnimation(keyPath: "strokeEnd")
+        animation.beginTime = CACurrentMediaTime() + delay
+        animation.duration = duration
+        animation.fromValue = 0
+        animation.toValue = 1
+        animation.timingFunction = CAMediaTimingFunction(name: .easeIn)
+        animation.fillMode = .forwards
+        animation.isRemovedOnCompletion = false
+        
+        self.progressShape?.removeAnimation(forKey: "circleAnimation")
+        self.progressShape?.strokeEnd = 0
+        self.progressShape?.add(animation, forKey: "circleAnimation")
     }
 }
 

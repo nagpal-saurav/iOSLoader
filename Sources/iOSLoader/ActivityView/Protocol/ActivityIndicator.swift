@@ -10,6 +10,7 @@ import SwiftUI
 
 protocol ActivityIndicatorView where Self:UIView {
     var isAnimating: Bool { get set }
+    var hideWhenStop: Bool { get set }
     
     func startAnimating()
     func stopAnimating()
