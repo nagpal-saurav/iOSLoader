@@ -36,7 +36,7 @@ public struct iOSLoader<Content>: View where Content: View  {
                     .blur(radius: self.isAnimating ? 3 : 0)
 
                 VStack(alignment: .center) {
-                    SwiftUIActivityView(activityIndicator: self.activityType, isAnimating: _isAnimating)
+                    SwiftUIActivityView(activityIndicator: self.activityType, isAnimating: _isAnimating).frame(width: 40, height: 40)
                     Text("Loading...")
                 }
                 .frame(width: loaderSize.width,

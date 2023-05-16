@@ -10,8 +10,7 @@ import SwiftUI
 
 @available(iOS 13.0, *)
 class iOActivityFactory{
-    public class func ActivityWithType(_ type: iOSLoaderActivityIndicatorType, isAnimating: Binding<Bool>) -> ActivityIndicatorView {
-        let activityFrame = CGRect(x: 0, y: 0, width: 40, height: 40)
+    public class func ActivityWithType(activityFrame: CGRect, _ type: iOSLoaderActivityIndicatorType, isAnimating: Binding<Bool>) -> ActivityIndicatorView {
         switch type {
         case .standard:
             return DefaultActivityIndicator(frame: activityFrame)

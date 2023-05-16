@@ -40,7 +40,7 @@ class CircleArcActivityIndicatorView: UIView, ActivityIndicatorView {
         self.backgroundShape = backgroundShape
         
         let progressShape = SDShapeFactory.shapeWithType(.circle(fillColor: UIColor.clear, strokeColor: UIColor.lightGray), size: self.frame.size)
-        progressShape.position = backgroundShape.position
+        progressShape.position = self.center
         if #available(iOS 15.0, *) {
             progressShape.strokeColor = UIColor.tintColor.cgColor
         } else {

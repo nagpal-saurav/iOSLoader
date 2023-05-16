@@ -19,7 +19,8 @@ struct SwiftUIActivityView: UIViewRepresentable {
     }
     
     func makeUIView(context: Context) -> UIView {
-        return iOActivityFactory.ActivityWithType(self.activityIndicator, isAnimating: _isAnimating)
+        let activityFrame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        return iOActivityFactory.ActivityWithType(activityFrame: activityFrame, self.activityIndicator, isAnimating: _isAnimating)
     }
     
     func updateUIView(_ uiView: UIView, context: Context) {
