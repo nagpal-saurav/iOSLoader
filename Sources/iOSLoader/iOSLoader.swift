@@ -1,12 +1,9 @@
 import SwiftUI
 
-/*
- *Enum of Animation type of Loading View
- *
- *   standard    -  Standard Activity Indicator Provided by iOS Framework
- *   circleArc  -  Show the Circle Arc fill Animation
- *   circleFill  -  Show the Circle Fill Animation
- */
+///   Enum of Animation type of Loading View
+///   standard    -  Standard Activity Indicator Provided by iOS Framework
+///   circleArc  -  Show the Circle Arc fill Animation
+///   circleFill  -  Show the Circle Fill Animation
 
 public enum iOSLoaderActivityIndicatorType: Int{
     case standard
